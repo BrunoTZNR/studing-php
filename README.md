@@ -52,10 +52,9 @@ $exemplo;
 ```php
   $exemplo = "exemplo";
   $exemplo2 = "de echo!";
+  
   echo $exemplo; //mostrará a palavra 'exemplo';
-  
   echo "A palavra soletrada e-x-e-m-p-l-o escreita é $exemplo"; //'A palavra soletrada e-x-e-m-p-l-o escreita é exemplo';
-  
   echo 'Aqui está um '.$exemplo.' '.$exemplo2.' concatenado usando aspas simples!'; //'Aqui está um exemplo de echo! concatenado usando aspas simples!';
 ```
 
@@ -65,7 +64,6 @@ $exemplo;
   var_dump($exemplo1); //srintg(2)='Oi';
   
   $exemplo2 = array("Fusca", 24, 10.2, "Bruno");
-
   var_dump($exemplo2); //array (size=4) 0=> string 'Fusca' (length=5), 1=> int 24, 2=> float 10.2, 3=> string 'Bruno' (length=5;)
 ```
 
