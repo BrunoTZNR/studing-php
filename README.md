@@ -511,3 +511,6 @@ $exemplo;
     echo "A cor é $valor <br>";
   } //A cor é azul, A cor é amarelo, A cor é verde, A cor é vermelho;
 ```
+
+#### Funções
+
