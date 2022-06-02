@@ -466,3 +466,48 @@ $exemplo;
       echo "A cor ".$cor." não é conhecida";
   } //A cor é vermelha;
 ```
+
+#### Estrutura de repetição
+
+##### While
+
+`while(condição)` -> Enquanto.
+```php
+  $x = 1;
+  
+  while($x<=5){
+    echo "$x";
+  } // 1, 2, 3, 4, 5;
+```
+
+##### Do...while
+
+`Do{...}while(condição)` -> Faça enquanto.
+```php
+  $y = 6;
+  
+  do{
+    echo "$y";
+    $y--;
+  }while($y>=0) //6, 5, 4, 3, 2, 1, 0;
+```
+
+##### for
+
+`for(variavel;condição;incremento/)` -> Para.
+```php
+  for($i=0;$i<=9;$i++){
+    echo "$i";
+  } //0, 1, 2, 3, 4, 5, 6, 7, 8, 9;
+```
+
+##### Foreach
+
+`foreach(variavel as alias)` -> Pecorra.
+```php
+  $cores = ["azul","amarelo","verde","vermelho"];
+
+  foreach($cores as $valor){
+    echo "A cor é $valor <br>";
+  } //A cor é azul, A cor é amarelo, A cor é verde, A cor é vermelho;
+```
