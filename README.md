@@ -513,4 +513,33 @@ $exemplo;
 ```
 
 #### Funções
+`function nameFuncation(parameters)` -> Função.
+```php
+  function EscreverMensagem($nome){
+    echo "Olá tudo bom $nome?";
+  }
+  //call function;
+  EscreverMensagem("Bruno"); //Olá tudo bom Bruno?;
 
+  function soma(int $n1, int $n2){
+    return $n1 + $n2;
+  }
+  //call the function with 'echo';
+  echo soma(10,10); //20;
+
+  function fazerCafe($tipo = "Capuccino"){
+    return "Fazendo café de: $tipo!";
+  }   
+  //call the function with 'echo', and changed a default variable in teh parameter;
+  echo fazerCafe("Chocolate"); //Fazendo café de: Chocolate!;
+  //call teh function witch 'echo' and starts with a default variable declarated
+  echo fazerCafe(); //Fazendo café de: Capuccino;
+?>
+```
+
+#### Arrays
+
+`$variableName = [...values...]` -> Declaração de um array.
+```php
+  $n = [1,2,3,4,5,6,7,8,9];
+```
