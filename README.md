@@ -58,6 +58,22 @@ $exemplo;
   echo 'Aqui está um '.$exemplo.' '.$exemplo2.' concatenado usando aspas simples!'; //'Aqui está um exemplo de echo! concatenado usando aspas simples!';
 ```
 
+`print_r($variavel)` -> Mostra a informação sobre uma variável de forma legível.
+```php
+  $exemplo = [1,2,3];
+  
+  echo "<pre>";
+  print_r($gwerg); //Bruno
+  echo "</pre>"; /*
+  Array
+    (
+        [0] => 1
+        [1] => 2
+        [2] => 3
+    )
+    */
+```
+
 `var_dump(variableName)` -> Imprime qual o tipo da variável.
 ```php
   $exemplo1 = "Oi";
@@ -534,7 +550,6 @@ $exemplo;
   echo fazerCafe("Chocolate"); //Fazendo café de: Chocolate!;
   //call teh function witch 'echo' and starts with a default variable declarated
   echo fazerCafe(); //Fazendo café de: Capuccino;
-?>
 ```
 
 #### Arrays
