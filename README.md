@@ -567,3 +567,178 @@ $exemplo;
 ```php
   $n = [1,2,3,4,5,6,7,8,9];
 ```
+
+`$variableName = [...values...]` -> Declara o array.
+```php
+  $carros = ["Fusca","Uno","Gol"];
+```
+
+`array_push($arrayName, "value")` -> Adiciona um valor na ultima posição do array.
+```php
+  $numeros = [1,2,3];
+```
+
+`array_push($variablename, value)` -> Puxa o dado incerido na ultima posição do array.
+```php
+  array_push($numeros, 4);
+  var_dump($numeros); //1, 2, 3, 4;
+```
+
+`$variableName[] = value;` -> Puxa o dado incerido na ultima posição do array.
+```php
+  $numeros[] = 5;
+  var_dump($numeros); //1, 2, 3, 4, 5;
+```
+
+`$variableName[indiceTroca] = value;` troca um valor dentro do array.
+```php
+  $carros[1] = "Ferrari"; //["Fusca","Ferrari","Gol"];
+```
+
+`count($variableName)` -> Mostra a quantidade de indices dentro do array.
+```php
+  $qtd = count($carros);
+  echo $qtd; //3;
+```
+
+`$arrayName = ["indice" => "value"];` -> Declarando um array associativo, usa uma string ao invés do indice numérico para mostrar a posição dentro do array.
+```php
+  $idade = ["Bruno"=>"19","Bianca"=>"18","Italo"=>"20","Renan"=>"27"];
+
+  echo $idade["Bruno"].' '.$idade["Bianca"].' '.$idade["Italo"].' '.$idade["Renan"]; //19, 18, 20, 27;
+
+  foreach($idade as $indice => $valor){
+      echo "<br>O nome é $indice e a idade é $valor"; 
+  }
+```
+
+`$variableName[indice] = value` -> Adicionando novos valores em um array associativo.
+```php
+  $idade["Ésoj"] = "25";
+  var_dump($idade); //"Bruno"=>"19","Bianca"=>"18","Italo"=>"20","Renan"=>"27","Ésoj"=>"25";
+ ```
+
+`sort($variableName)` -> Organiza em ordem alfabética/numeral em formato ascendente o array modificando os indices.
+```php
+  sort($carros);
+```
+
+`rsort($variableName)` -> Organiza em ordem alfabética/numeral em formato descendente o array modificando os indices.
+```php
+  rsort($carros);
+```
+
+`asort($variableName)` -> Organiza em ordem alfabética/numeral em formato ascendente o array pelo valor mantendo os indices.
+```php
+  asort($idade);
+```
+
+`arsort($variableName)` -> Organiza em ordem alfabética/numeral em formato descendente o array pelo valor mantendo os indices.
+```php
+  arsort($idade);
+```
+
+`ksort($variableName)` -> Organiza em ordem alfabética/numeral em formato ascendente o array pelo indice;
+```php
+  ksort($idade);
+```
+
+`krsort($variableName)` -> Organiza em ordem alfabética/numeral em formato descendente o array pelo indice;
+```php
+  krsort($idade);
+```
+
+`shuffle($variableName)` -> Bagunça o array.
+```php
+  shuffle($carros);
+```
+
+`$variableName = [[x1,x2],[y1,y2]];` -> Declarando um array multidimencional.
+```php
+  $exemplo = [[1,2,3],[4,5,6],[7,8,9]];
+  var_dump($exemplo);
+  echo $exemplo[1][0]; //4
+
+  $exemplo2 = [
+      "pessoas"=> [
+      ["id"=>1,"nome"=>"Bruno","idade"=>19],
+      ["id"=>2,"nome"=>"Bianca","idade"=>18],
+      ["id"=>3,"nome"=>"Italo","idade"=>20],
+      ["id"=>4,"nome"=>"Renan","idade"=>27]]
+  ];
+  var_dump($exemplo2);
+  echo "<pre>";
+  print_r($exemplo2["pessoas"][0]["nome"]); //Bruno
+  echo "</pre>";
+```
+
+`array_keys($variableName)` -> Mostra as chaves do array selecionado.
+```php
+  print_r(array_keys($idade));
+```
+
+`array_values($variableName)` -> Mostra os valores do array selecionado.
+```php
+  print_r(array_values($idade));
+```
+
+`in_array("value",$variableName)` -> Mostra se tem ou não no array retornando 1(true) ou 0(false).
+```php
+  var_dump(in_array("Uno",$carros)); //false;
+  var_dump(in_array("Ferrari",$carros)); //true;
+```
+
+`array_search("value",$variableName)` -> Procura o valor e retorna a indice, caso não ache retorna false.
+```php
+  var_dump(array_search("Uno",$carros)); //false;
+  var_dump(array_search("Ferrari",$carros)); //2;
+```
+
+`isset($variableName[indice])` -> Checa se o indice existe, 1(true) ou 0(false), também serve para checar se uma variavel está setada, porem nao identifica nulos.
+```php
+  var_dump(isset($nome)); //false;
+  var_dump(isset($exemplo2["pessoas"][2])); //true;
+  var_dump(isset($idade["Italo"])); //true;
+  var_dump(isset($idade["José"])); //false;
+```
+
+`array_key_exists("value",$variableName)` -> Checa se o indice existe, 1(true) ou 0(false), também identifica valores nulos.
+```php
+  var_dump(array_key_exists("Italo",$idade)); //true;
+  var_dump(array_key_exists("José",$idade)); //false;
+```
+
+`array_key_first($variableName)` -> Mostra o 1º indice do array, versão php7>.
+```php
+  echo array_key_first($idade); //Ésoj;
+```
+
+`reset(array_keys($variableName))` -> Mostra o 1º indice do array, versão php7<.
+```php
+  echo reset(array_keys($idade)); //Ésoj;
+```
+
+`array_key_last($variableName)` -> Mostra o 1º indice do array, versão php7>.
+```php
+  echo array_key_last($idade); //Bianca;
+```
+
+`end(array_keys($variableName))` -> Mostra o 1º indice do array, versão php7<.
+```php
+  echo end(array_keys($idade)); //Bianca;
+```
+
+`array_flip($variableName)` -> Inverte indices para valores e valores para indices.
+```php
+  print_r(array_flip($carros));
+```
+
+`implode("separador",$variableName)` -> Converte o array em uma string.
+```php
+  echo implode(", ",$carros); //Gol, Fusca, Ferrari;
+```
+
+`explode("separador",string)` -> Converte o array em uma string.
+```php
+  print_r(explode(", ","Olá, Bruno, Como, Está, ?")); //Array ( [0]Olá, [1]Bruno, [2]Como, [3]Está, [4]? );
+```
