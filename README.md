@@ -773,11 +773,11 @@ $exemplo;
     $arrayB = [10,17,22,26];
 
     echo "<pre>";
-    print_r(array_diff($arrayA,$arrayB));
+    print_r(array_diff($arrayA,$arrayB)); //[1]15,[2]25;
     echo "</pre>";
 
     echo "<pre>";
-    print_r(array_diff($arrayB,$arrayA));
+    print_r(array_diff($arrayB,$arrayA)); //[1]17,[2]22,[3]26;
     echo "</pre>";
 ```
 
