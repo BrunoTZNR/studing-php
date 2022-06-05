@@ -742,3 +742,152 @@ $exemplo;
 ```php
   print_r(explode(", ","Olá, Bruno, Como, Está, ?")); //Array ( [0]Olá, [1]Bruno, [2]Como, [3]Está, [4]? );
 ```
+
+`array_unique($arrayName)` -> Seleciona os valores unicos dentro do array;
+```php
+    $array = [10,11,11,12,15,15];
+    echo "<pre>";
+    print_r($array);
+    echo "</pre>";
+
+    echo "<pre>";
+    print_r(array_unique($array));
+    echo "</pre>";
+```
+
+`array_filter()` -> Limpa todos os indices que os valores se apareçam com 'false' ou '0';
+```php
+    $array2 = ['nome'=>'Bruno','canal'=>'TZNR','instagram'=>null];
+    echo "<pre>";
+    print_r($array2);
+    echo "</pre>";
+
+    echo "<pre>";
+    print_r(array_filter($array2));
+    echo "</pre>";
+```
+
+`array_diff($arrayName,$arrayName)` -> Verifica as diferenças dos arrays e mostra as indices correspondentes a cada valor.
+```php
+    $arrayA = [10,15,25];
+    $arrayB = [10,17,22,26];
+
+    echo "<pre>";
+    print_r(array_diff($arrayA,$arrayB));
+    echo "</pre>";
+
+    echo "<pre>";
+    print_r(array_diff($arrayB,$arrayA));
+    echo "</pre>";
+```
+
+`array_intersect($arrayName,$arrayName)` -> Verifica as igualdades dos arrays.
+```php
+    echo "<pre>";
+    print_r(array_intersect($arrayA,$arrayB)); //[0]=>10;
+    echo "</pre>";
+```
+
+`array_column($arrayName,indiceName)` -> Mostra os valores do indice indicado.
+```php
+    $exemplo2 = [
+        "pessoas"=> [
+        ["id"=>1,"nome"=>"Bruno","idade"=>19],
+        ["id"=>2,"nome"=>"Bianca","idade"=>18],
+        ["id"=>3,"nome"=>"Italo","idade"=>20],
+        ["id"=>4,"nome"=>"Renan","idade"=>27]]
+    ];
+
+    echo "<pre>";
+    print_r(array_column($exemplo2["pessoas"],"nome"));
+    echo "</pre>";
+```
+
+`array_combine($arrayIndice,$arrayValores)` -> Combina dois arrays(os dois devem possuir o mesmo tamanho).
+```php
+    $arrayI = [1,10,22];
+    $arrayV = ['a','c','d'];
+
+    echo "<pre>";
+    print_r(array_combine($arrayV,$arrayI));
+    echo "</pre>";
+```
+
+`array_merge($arrayName1,$arrayName2...)` -> Mescla dois arrays.
+```php
+    $arrayN = ['Bruno','Bianca','Italo'];
+    $arrayM = ['Renan','Ésoj','Douglas'];
+
+    echo "<pre>";
+    print_r(array_merge($arrayN,$arrayM));
+    echo "</pre>";
+```
+
+`array_pad($arrayName,totalPosições,valor)` -> Adiciona uma quantidade escolhida de posições no array, caso o mesmo não possua.
+```php
+    $arrayP = ['A','B'];
+
+    echo "<pre>";
+    print_r(array_pad($arrayP,10,'sem posição'));
+    echo "</pre>";
+```
+
+`array_shift($arrayName)` -> Consome os valores do array partindo do primeiro valor, tirando-o dos mesmo.
+```php
+    $arrayS = ['A',1,'B','2'];
+
+    echo "<pre>";
+    print_r($arrayS); //[0]=>A,[1]=>1,[2]=>B,[3]=>2;
+    echo "</pre>";
+
+    echo "<pre>";
+    echo array_shift($arrayS); //A
+    echo "</pre>";
+
+    echo "<pre>";
+    print_r($arrayS); //[0]=>1,[1]=>B,[2]=>2;
+    echo "</pre>";
+```
+
+`array_unshift(value1,value2...)` -> Adiciona um valor no array antes do primeiro valor.
+```php
+    $arrayW = ['B','C'];
+
+    echo "<pre>";
+    print_r($arrayW); //[0]=>B,[1]=>C;
+    echo "</pre>";
+
+    array_unshift($arrayW,'A');
+
+    echo "<pre>";
+    print_r($arrayW); //[0]=>A,[1]=>B,[2]=>C;
+    echo "</pre>";
+```
+
+`array_pop($arrayName)` -> Consome os valores do array partindo do ultimo valor, tirando-o dos mesmo.
+```php
+    echo "<pre>";
+    print_r($arrayW); //[0]=>A,[1]=>B,[2]=>C;
+    echo "</pre>";
+
+    echo "<pre>";
+    echo array_pop($arrayW); //C
+    echo "</pre>";
+
+    echo "<pre>";
+    print_r($arrayW); //[0]=>A,[1]=>B;
+    echo "</pre>";
+```
+
+`unset($arrayName[indice])` -> Apaga o valor do array pelo indice correspondente.
+```php
+    echo "<pre>";
+    print_r($arrayW); //[0]=>A,[1]=>B;
+    echo "</pre>";
+
+    unset($arrayW[1]);
+
+    echo "<pre>";
+    print_r($arrayW); //[0]=>A;
+    echo "</pre>";
+```
