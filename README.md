@@ -896,7 +896,7 @@ $exemplo;
 
 ##### $GLOBALS
 
-`$GLOBAL [$variableName]` -> Declara uma variável global podendo usar dentro e fora de funções.
+`$GLOBAL ['$variableName']` -> Declara uma variável global podendo usar dentro e fora de funções.
 ```php
   $a=10;
   $b=20;
