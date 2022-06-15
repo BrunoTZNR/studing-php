@@ -173,6 +173,36 @@ $exemplo;
   var_dump(is_numeric($valor4)); //boolean(true)
 ```
 
+`isset($variableName);` -> Verifica se existe a variável especificada.
+```php
+  $nome = 'Bruno';
+  var_dump(isset($nome)); //true;
+  var_dump(isset($idade)); //false;
+```
+
+`htmlspecialchars($variable)` -> Tira os caracteres especiais, ajuda com a segurança da página com php.
+```php
+  $velho ="<a>Olá Mundo!</a>";
+  $novo =htmlspecialchars("<a>Olá Mundo!</a>");
+  
+  echo $velho; //Olá mun!do
+  echo $novo;  //<a>Olá Mundo!</a>;
+```
+
+`trim($variableName)` -> Tira os espaços em branco no inicio e final do valor, e caracteres especiais ex: <br>, /n;
+```php
+  $nome=" Bruno ";
+  echo $nome; // Bruno ;
+  echo trim($nome); //Bruno;
+```
+
+`stripslashes($variableName)` -> Tira as barras invertidas;
+```php
+  $nome="Seu nome é\ Bruno";
+  echo $nome; //Seu nome é\ Bruno;
+  echo stripslashes($nome); //Seu nome é Bruno;
+```
+
 `pi();` -> Mostra o valor de pi.
 ```php
   echo pi(); //3.1415926535898;
@@ -922,4 +952,41 @@ $exemplo;
   echo $_SERVER['REMOTE_ADDR']; //::1;
   echo $_SERVER['HTTP_USER_AGENT']; //informações queme stá acessando o site;
   echo $_SERVER['SCRIPT_NAME']; //nome do projeto.
+```
+
+##### $_GET
+
+`$_GET['value']` -> Pega informações do cabeçalho http da página ou seja da url.
+```php
+  //...?nome=Bruno
+  $nome = $_GET['nome'];
+  echo $nome; //Bruno
+  
+  //...?sobrenome=Silva&idade=19
+  $sobrenome = $_GET['sobrenome'];
+  $idade = $_GET['idade'];
+  echo $sobrenome.' '.$idade; //Silva 19;
+```
+
+##### $_POST
+
+`$_POST` -> Pega informações que foram enviados atraves de um formulário, ele não passa as informação na url da página.
+```php
+  //...nome=bruno&idade=19
+  if (isset($_POST['nome']) && isset($_POST['idade'])){
+    $nome=limpaPost($_POST['nome']);
+    $idade=limpaPost($_POST['idade']);
+    echo "<h2>Nome: $nome <br> Idade: $idade</h2>";
+    /*
+      Nome: Bruno
+      Idade: 19
+    */
+  }
+  //função de segurança para o método POST
+  function limpaPost($valor){
+    $valor=trim($valor);
+    $valor=stripslashes($valor);
+    $valor=htmlspecialchars($valor);
+    return $valor;
+  }
 ```
