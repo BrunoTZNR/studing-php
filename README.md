@@ -83,13 +83,14 @@ $exemplo;
   var_dump($exemplo2); //array (size=4) 0=> string 'Fusca' (length=5), 1=> int 24, 2=> float 10.2, 3=> string 'Bruno' (length=5;)
 ```
 
-`var_dump(variableName)` -> Imprime qual o tipo da variável.
+`empty($variableName)` -> Determina se uma variável é considerada vazia, é considerada vazia se não existir ou seu valor é igual false.
 ```php
-  $exemplo1 = "Oi";
-  var_dump($exemplo1); //srintg(2)='Oi';
-  
-  $exemplo2 = array("Fusca", 24, 10.2, "Bruno");
-  var_dump($exemplo2); //array (size=4) 0=> string 'Fusca' (length=5), 1=> int 24, 2=> float 10.2, 3=> string 'Bruno' (length=5;)
+  $nome="";
+  $idade=18;
+
+  var_dump(empty($nome));         //true
+  var_dump(empty($sobrenome));    //true
+  var_dump(empty($idade));        //false
 ```
 
 `strlen(string)` -> Conta quantos caracteres a string possui.
@@ -129,6 +130,33 @@ $exemplo;
 
   echo str_replace("Mundo","Bruno",$palavra); //Olá Bruno;
   echo str_replace("-","/","01-01-2003");     //01/01/2003
+```
+
+`stripslashes($variableName)` -> Tira as barras invertidas;
+```php
+  $nome="Seu nome é\ Bruno";
+  echo $nome; //Seu nome é\ Bruno;
+  echo stripslashes($nome); //Seu nome é Bruno;
+```
+
+`preg_match("/EXPRESSION/" ,$variableName)` -> Verifica se há algum item na variável qeu haja na expreção.
+```php
+  $nome="Bruno";
+  $nome2=" Bruno123@";
+
+  if(preg_match("/^[a-zA-Z-' ]*$/", $nome)){ //está expressão diz qeu aceita letras minúsculas e maísculas de A até Z, apóstrofe ' e espaços.
+    echo "O nome é válido!";
+  }else{
+    echo "O nome é inválido!";
+  }
+  //O nome é válido!
+
+  if(preg_match("/^[a-zA-Z-' ]*$/", $nome2)){
+    echo "O nome é válido!";
+  }else{
+    echo "O nome é inválido!";
+  }
+  //O nome é inválido!;
 ```
 
 `$variableName = (typeNum)$variable;` -> Conversão int - float.
@@ -196,11 +224,17 @@ $exemplo;
   echo trim($nome); //Bruno;
 ```
 
-`stripslashes($variableName)` -> Tira as barras invertidas;
+`filter_var($variableName, FILTER)` -> Filtra a variável com um especificado filtro.
 ```php
-  $nome="Seu nome é\ Bruno";
-  echo $nome; //Seu nome é\ Bruno;
-  echo stripslashes($nome); //Seu nome é Bruno;
+  $email="bruno123@email.com";
+  $email2="bruno 123@email";
+  $url="https://www.exemplo.com";
+  $url2="exemp lo.com.exemplos";
+  
+  var_dump(filter_var($email, FILTER_VALIDATE_EMAIL));    //bruno123@email.com;
+  var_dump(filter_var($email2, FILTER_VALIDATE_EMAIL));   //false;
+  var_dump(filter_var($url, FILTER_VALIDATE_URL));        //https://www.exemplo.com;
+  var_dump(filter_var($url2, FILTER_VALIDATE_URL));       //false;
 ```
 
 `pi();` -> Mostra o valor de pi.
