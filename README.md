@@ -93,6 +93,11 @@ $exemplo;
   var_dump(empty($idade));        //false
 ```
 
+`header()` -> É usado para enviar um cabeçalho HTTP bruto.
+```php
+  header('Location: https://google.com'); //Você é redirecionado a página inserida no header;
+```
+
 `strlen(string)` -> Conta quantos caracteres a string possui.
 ```php
   $palavra = "Bruno";
