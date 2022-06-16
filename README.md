@@ -1100,6 +1100,7 @@ $exemplo;
 ```php
   include_once('include-test.php'); //Olá mundo!;
 ```
+##### Require
 `require('diretorio');` -> Inclui uma arquivo php dentro de um arquivo php, caso nao consiga ele retorna um erro fatal e para o script.
 ```php
   require_once('require-test.php'); //Olá mundo!;
