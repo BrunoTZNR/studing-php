@@ -1105,3 +1105,75 @@ $exemplo;
 ```php
   require_once('require-test.php'); //Olá mundo!;
 ```
+
+#### File manipulation
+`fopen(diretorio.nomeArquivo, modoExec)` -> Caso o arquivo exista ele irá abrir, caso não ele criará um arquivo.
+```php
+  $pasta = "arquivos/";
+
+  if(!is_dir($pasta)){
+    mkdir($pasta,0755);
+  }
+
+  $nome_arquivo = date('y-m-d-H-i-s')."txt";
+  
+  $arquivo = fopen($pasta.$nome_arquivo, 'a+');
+```
+
+`fwrite(nomeArquivo, 'content')` -> Escreve algo dentro do arquivo.
+`PHP_EOL` -> Pula uma linha, sendo uma constante própria do PHP.
+```php
+  fwrite($arquivo, 'uma linha injetada pelo PHP'.PHP_EOL);
+  fwrite($arquivo, 'uma linha injetada 2'.PHP_EOL);
+  fwrite($arquivo, 'uma linha injetada 3'.PHP_EOL);
+```
+
+`fclose(nomeArquivo)` -> Fecha o arquivo aberto.
+```php
+   fclose($arquivo);
+```
+
+`file_exists(nomeArquivo ou diretorio.nomeArquivo)` -> Verifica se o arquivo existe.
+`is_file(nomeArquivo ou diretorio.nomeArquivo)` -> Verifica se o arquivo é um arquivo.
+`feof(nomeArquivo ou diretorio.nomeArquivo)` -> Pecorre ate o fim do arquivo.
+`fgets(nomeArquivo ou diretorio.nomeArquivo)` -> Retorna uma linha de um arquivo.
+`file_get_contents(nomeArquivo ou diretorio.nomeArquivo)` -> Lê todo o conteúdo de um arquivo para uma string.
+`scandir(diretorio)` -> Retorna um array de arquivos e diretórios do diretório especificado.
+`unlink(nomeArquivo ou diretorio.nomeArquivo)` -> Apaga um arquivo.
+```php
+  $caminho_arquivo = $pasta.$nome_arquivo;
+    
+  if(file_exists($caminho_arquivo) && is_file($caminho_arquivo)){
+    $abrir_arquivo = fopen($caminho_arquivo, 'r');
+    while(!feof($abrir_arquivo)){
+      echo fgets($abrir_arquivo)."<br>";
+    }
+      fclose($abrir_arquivo);
+    }
+    
+    if(file_exists($caminho_arquivo) && is_file($caminho_arquivo)){
+      echo file_get_contents($caminho_arquivo);
+    }
+    
+    if(is_dir($pasta)){
+      foreach(scandir($pasta) as $arquivos){
+        $caminho = $pasta.$arquivos;
+        if(is_file($caminho)){
+          unlink($caminho);
+        }
+     }
+     rmdir($pasta);
+   }
+```
+
+`copy(nomeArquivoFonte, nomeArquivoCopiado)` -> Copia um arquivo.
+```php
+  copy('exemplo.txt', 'exemplo-copiado.txt');
+```
+
+`file_put_contents(arquivo, conteudo)` -> É usada para escrever uma string em um arquivo, caso o arquivo não exista ele criará um
+```php
+  $arquivo_exemplo = "reset.css";
+  file_put_contents($arquivo_exemplo, '*{margin: 0; padding: 0; box-sizing: 0;}');
+```
+
