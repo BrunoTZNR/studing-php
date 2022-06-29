@@ -1029,3 +1029,151 @@ $exemplo;
     return $valor;
   }
 ```
+
+#### Data manipulation
+<p>https://www.php.net/manual/pt_BR/datetime.format.php -> tipos de input dentro de date().</p>
+```php
+  echo date('Y/m/d')."<br>"; //ano/mês/dia -> Mostra a data completa correspondentes do seu servidor.
+  echo date('H:i:s')."<br>"; //hora(00 a 23):minutos:segundos -> Mostra a Hora completa correspondentes do seu servidor.
+```
+
+`strtotime($variablename)` -> Converte uma string para o formato de data.
+```php
+  $data='2022-10-15';
+  $dataConvertida = strtotime($data);
+```
+
+#### Folders manipulation
+`mkdir(nomePasta)` -> Cria uma pasta no diretório do arquivo php.
+```php
+  $nomePasta = "nova-pasta";
+  mkdir($nomePasta);
+```
+
+`mkdir(nomePasta1/nomePasta2/.../)` -> Cria mais de uma pasta no diretório do arquivo php.
+```php
+    mkdir("teste/newfolder/", 0755, true);
+```
+
+`is_dir(nomePasta)` -> Verifica se há algum diretório existente.
+```php
+    var_dump(is_dir($nomePasta)); //true or false;
+```
+
+`rmdir(nomePasta)` -> Deleta uma pasta, deleta apenas pastas vazias.
+```php
+    rmdir($nomePasta); //true or false;
+```
+
+`chmod(diretorio, codigo)` -> Modifica as permissões do arquivo.
+```php
+    chmod($nomePasta, 0755); //mudou a permissão da pasta de acordo com o código 0755;
+    
+    //este exemplo verifica se a pasta existe, caso não, cria a pasta com a permissão 0755.
+    if(!is_dir($nomePasta)){
+      mkdir($nomePasta, 0755);
+    }
+    
+    /*permissões mais usadas:
+      0600: Escrita e leitura para o proprietario, nada ninguem mais;
+      0644: Escrita e leitura para o proprietario, leitura para todos os outros;
+      0755: Tudo para o proprietario, leitura e execucao para os outros;
+      0750: Tudo para o proprietario, leitura e execucao para o grupo do prop.*/
+```
+
+`rename(nomePasta, novoNome)` -> Muda o nome da pasta.
+```php
+  rename($nomePasta, 'novo-nome'); //nova-pasta -> novo-nome;
+```
+
+`rename(nomePasta, novoNome)` -> Usamos o remane para mover pastas.
+```php
+  rename('teste/newFolder/','newFolder'); //neste exemplo a pasta 'newfolder' sairá da pasta teste e irá para a pasta original;
+```
+
+#### Include / Require
+
+`..._once` -> Evita recarregamento do arquivo.
+
+##### Include
+`include('diretorio');` -> Inclui uma arquivo php dentro de um arquivo php, caso não consiga ele retorna um warning e continua o script.
+```php
+  include_once('include-test.php'); //Olá mundo!;
+```
+##### Require
+`require('diretorio');` -> Inclui uma arquivo php dentro de um arquivo php, caso nao consiga ele retorna um erro fatal e para o script.
+```php
+  require_once('require-test.php'); //Olá mundo!;
+```
+
+#### File manipulation
+`fopen(diretorio.nomeArquivo, modoExec)` -> Caso o arquivo exista ele irá abrir, caso não ele criará um arquivo.
+```php
+  $pasta = "arquivos/";
+
+  if(!is_dir($pasta)){
+    mkdir($pasta,0755);
+  }
+
+  $nome_arquivo = date('y-m-d-H-i-s')."txt";
+  
+  $arquivo = fopen($pasta.$nome_arquivo, 'a+');
+```
+
+`fwrite(nomeArquivo, 'content')` -> Escreve algo dentro do arquivo.
+`PHP_EOL` -> Pula uma linha, sendo uma constante própria do PHP.
+```php
+  fwrite($arquivo, 'uma linha injetada pelo PHP'.PHP_EOL);
+  fwrite($arquivo, 'uma linha injetada 2'.PHP_EOL);
+  fwrite($arquivo, 'uma linha injetada 3'.PHP_EOL);
+```
+
+`fclose(nomeArquivo)` -> Fecha o arquivo aberto.
+```php
+   fclose($arquivo);
+```
+
+`file_exists(nomeArquivo ou diretorio.nomeArquivo)` -> Verifica se o arquivo existe.
+`is_file(nomeArquivo ou diretorio.nomeArquivo)` -> Verifica se o arquivo é um arquivo.
+`feof(nomeArquivo ou diretorio.nomeArquivo)` -> Pecorre ate o fim do arquivo.
+`fgets(nomeArquivo ou diretorio.nomeArquivo)` -> Retorna uma linha de um arquivo.
+`file_get_contents(nomeArquivo ou diretorio.nomeArquivo)` -> Lê todo o conteúdo de um arquivo para uma string.
+`scandir(diretorio)` -> Retorna um array de arquivos e diretórios do diretório especificado.
+`unlink(nomeArquivo ou diretorio.nomeArquivo)` -> Apaga um arquivo.
+```php
+  $caminho_arquivo = $pasta.$nome_arquivo;
+    
+  if(file_exists($caminho_arquivo) && is_file($caminho_arquivo)){
+    $abrir_arquivo = fopen($caminho_arquivo, 'r');
+    while(!feof($abrir_arquivo)){
+      echo fgets($abrir_arquivo)."<br>";
+    }
+      fclose($abrir_arquivo);
+    }
+    
+    if(file_exists($caminho_arquivo) && is_file($caminho_arquivo)){
+      echo file_get_contents($caminho_arquivo);
+    }
+    
+    if(is_dir($pasta)){
+      foreach(scandir($pasta) as $arquivos){
+        $caminho = $pasta.$arquivos;
+        if(is_file($caminho)){
+          unlink($caminho);
+        }
+     }
+     rmdir($pasta);
+   }
+```
+
+`copy(nomeArquivoFonte, nomeArquivoCopiado)` -> Copia um arquivo.
+```php
+  copy('exemplo.txt', 'exemplo-copiado.txt');
+```
+
+`file_put_contents(arquivo, conteudo)` -> É usada para escrever uma string em um arquivo, caso o arquivo não exista ele criará um
+```php
+  $arquivo_exemplo = "reset.css";
+  file_put_contents($arquivo_exemplo, '*{margin: 0; padding: 0; box-sizing: 0;}');
+```
+
