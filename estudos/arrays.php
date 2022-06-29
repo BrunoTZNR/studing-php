@@ -243,7 +243,4 @@
     echo "<pre>";
     print_r($arrayW); //[0]=>A;
     echo "</pre>";
-
-    //`array_map(function($value){...return $value;},$arrayName)`
-
 ?>
